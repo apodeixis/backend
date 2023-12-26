@@ -1,4 +1,4 @@
-FROM golang1.19:alpine3.18 as buildbase
+FROM golang:1.19-alpine3.18 as buildbase
 
 WORKDIR /go/src/github.com/apodeixis/backend
 
