@@ -1,0 +1,25 @@
+allOf:
+  - type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - name
+          - email
+          - password
+        properties:
+          name:
+            type: string
+          email:
+            type: string
+          password:
+            type: string

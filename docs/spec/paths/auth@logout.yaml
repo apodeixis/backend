@@ -1,0 +1,34 @@
+post:
+  tags:
+    - Auth
+  summary: Logout user.
+  description: Invalidate refresh token.
+  operationId: logout
+  security:
+    - bearerAuth: [ ]
+  requestBody:
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+  responses:
+    204:
+      description: "No content: user logged out."
+    401:
+      description: "Unauthorized: invalid or expired access token."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    404:
+      description: "Not found: refresh token does not exist."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"

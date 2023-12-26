@@ -1,0 +1,51 @@
+patch:
+  tags:
+    - Refresh
+  summary: Refresh token
+  operationId: refresh
+  description: >-
+    Extracts refresh token from cookie and in case it exists and is legit, rotates it
+    and creates access token.
+  security:
+    - refreshTokenCookie: [ ]
+  requestBody:
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+  responses:
+    200:
+      description: "Success: refreshed."
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: "#/components/schemas/AuthToken"
+    400:
+      description: "Bad request: refresh token cookie is not set or is not in jwt format."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    404:
+      description: "Not found: refresh token from cookie does not exist."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    409:
+      description: "Unauthorized: refresh token cookie is invalid or expired."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"

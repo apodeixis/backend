@@ -1,0 +1,6 @@
+in: query
+name: 'author[id]'
+required: false
+schema:
+  type: integer
+  minimum: 1

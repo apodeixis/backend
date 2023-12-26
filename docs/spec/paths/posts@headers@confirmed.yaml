@@ -1,0 +1,40 @@
+get:
+  tags:
+    - Posts
+  summary: Get confirmed posts headers.
+  operationId: getConfirmedPostsHeaders
+  parameters:
+    - $ref: '#/components/parameters/queryLimit'
+    - $ref: '#/components/parameters/queryCursor'
+    - $ref: '#/components/parameters/querySorting'
+    - $ref: '#/components/parameters/queryAuthorId'
+  responses:
+    200:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostHeader'
+              included:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    404:
+      description: Not found.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'

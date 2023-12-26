@@ -1,0 +1,28 @@
+post:
+  tags:
+    - OAuth2
+  summary: Generate URL for Google OAuth2 sign in.
+  operationId: oAuth2Google
+  requestBody:
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+  responses:
+    200:
+      description: "Success: composed URL and saved state."
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: "#/components/schemas/OAuth2"
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"

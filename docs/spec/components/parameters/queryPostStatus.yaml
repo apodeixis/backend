@@ -1,0 +1,11 @@
+in: query
+name: 'post[status]'
+required: false
+schema:
+  type: string
+  enum:
+    - new
+    - pending
+    - confirmed
+    - failed
+  default: confirmed

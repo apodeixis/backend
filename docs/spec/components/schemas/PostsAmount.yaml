@@ -1,0 +1,20 @@
+allOf:
+  - type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - amount
+        properties:
+          amount:
+            type: integer
+            format: int64

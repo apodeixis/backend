@@ -1,0 +1,31 @@
+delete:
+  tags:
+    - User
+  summary: Delete post from starred.
+  operationId: deletePostFromStarred
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: '#/components/parameters/pathId'
+  responses:
+    204:
+      description: "No content: post successfully deleted from starred."
+    401:
+      description: "Unauthorized: access token is invalid or expired."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    404:
+      description: "Not found: starred post does not exist."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+

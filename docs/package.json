@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "dependencies": {
+    "@redocly/cli": "1.6.0",
+    "swagger-repo": "2.0.0-rc.15"
+  },
+  "private": true,
+  "scripts": {
+    "start": "swagger-repo serve",
+    "build": "swagger-repo build -o web_deploy",
+    "test": "swagger-repo validate",
+    "release-build": "npm run build && redocly build-docs ./web_deploy/openapi.yaml  -o ./public/index.html -t ./web/index.hbs",
+    "gh-pages": "swagger-repo gh-pages"
+  }
+}

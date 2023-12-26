@@ -1,0 +1,29 @@
+get:
+  tags:
+    - Users
+  summary: Get user.
+  operationId: getUser
+  parameters:
+    - $ref: '#/components/parameters/pathId'
+  responses:
+    200:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/components/schemas/User'
+    404:
+      description: "Not found: user with such an id does not exist."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'

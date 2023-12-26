@@ -1,0 +1,22 @@
+allOf:
+  - type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - code
+          - state
+        properties:
+          code:
+            type: string
+          state:
+            type: string

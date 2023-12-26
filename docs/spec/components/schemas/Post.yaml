@@ -1,0 +1,44 @@
+allOf:
+  - $ref: '#/components/schemas/PostKey'
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - title
+          - body
+          - starred
+          - status
+        properties:
+          title:
+            type: string
+          body:
+            type: string
+          tx_hash:
+            type: string
+          tx_timestamp:
+            type: integer
+            format: int64
+          starred:
+            type: boolean
+          status:
+            type: string
+            enum:
+              - new
+              - pending
+              - confirmed
+              - failed
+      relationships:
+        type: object
+        required:
+          - author
+        properties:
+          author:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: '#/components/schemas/UserKey'

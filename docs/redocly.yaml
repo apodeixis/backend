@@ -1,0 +1,7 @@
+apiTitle: backend
+splitSpec: true
+codeSamples: false
+swaggerUI: true
+travis: true
+repo: apodeixis/gast/backend
+oasVersion: 1.0.0

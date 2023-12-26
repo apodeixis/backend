@@ -1,0 +1,32 @@
+configVersion: 1
+project: 'backend'
+---
+image: builder
+from: golang1.19:alpine3.18
+docker:
+  WORKDIR: /go/src/github.com/apodeixis/backend
+git:
+- add: /
+  to: /go/src/github.com/apodeixis/backend
+  stageDependencies:
+    setup:
+    - "**/*"
+shell:
+  setup:
+  - export CGO_ENABLED=0
+  - export GOOS=linux
+  - go build -o /usr/local/bin/backend /go/src/github.com/apodeixis/backend/main.go
+
+---
+image: service
+from: alpine:3.18
+docker:
+  ENTRYPOINT: backend
+shell:
+  setup:
+  - apk add --no-cache ca-certificates
+import:
+- image: builder
+  add: /usr/local/bin/backend
+  to: /usr/local/bin/backend
+  after: setup

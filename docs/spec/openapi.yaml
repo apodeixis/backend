@@ -1,0 +1,7 @@
+openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: Apodeixis backend
+  license:
+    name: MIT
+    url: https://github.com/apodeixis/backend/blob/main/LICENSE

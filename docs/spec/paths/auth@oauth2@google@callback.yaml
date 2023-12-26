@@ -1,0 +1,78 @@
+patch:
+  tags:
+    - OAuth2
+  summary: Callback from sign in with Google.
+  operationId: oAuth2SignInGoogle
+  description: Sign Up/Login user via Google.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - data
+          properties:
+            data:
+              $ref: "#/components/schemas/OAuth2Callback"
+  responses:
+    200:
+      description: "Success: logged in with Google."
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            required:
+              - data
+              - included
+            properties:
+              data:
+                $ref: '#/components/schemas/User'
+              included:
+                type: array
+                items:
+                  type: object
+                  anyOf:
+                    - $ref: '#/components/schemas/AuthToken'
+    201:
+      description: "Created: signed up with Google."
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            required:
+              - data
+              - included
+            properties:
+              data:
+                $ref: '#/components/schemas/User'
+              included:
+                type: array
+                items:
+                  type: object
+                  anyOf:
+                    - $ref: '#/components/schemas/AuthToken'
+    400:
+      description: Bad request.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    403:
+      description: "Forbidden: state is invalid or expired."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    422:
+      description: "Unprocessable entity: user is already registered without OAuth2."
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: "#/components/schemas/Errors"

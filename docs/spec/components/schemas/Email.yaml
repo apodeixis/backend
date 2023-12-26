@@ -1,0 +1,20 @@
+allOf:
+  - type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+        enum:
+          - email
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - email
+        properties:
+          email:
+            type: string

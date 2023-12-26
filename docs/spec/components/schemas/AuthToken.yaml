@@ -1,0 +1,17 @@
+allOf:
+  - $ref: '#/components/schemas/AuthTokenKey'
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - access
+          - expires_at
+        properties:
+          access:
+            type: string
+          expires_at:
+            type: integer
+            format: int64

@@ -1,0 +1,23 @@
+get:
+  tags:
+    - Posts
+  summary: Get posts amount.
+  operationId: getPostsAmount
+  responses:
+    200:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: '#/components/schemas/PostsAmount'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
