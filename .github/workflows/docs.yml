@@ -30,7 +30,7 @@ jobs:
           npm install
           npm run release-build
 
-      - uses: actions/upload-pages-artifact@v2
+      - uses: actions/artifact@v4
         with:
           path: './docs/public/'
 
