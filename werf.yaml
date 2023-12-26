@@ -1,5 +1,5 @@
 configVersion: 1
-project: 'backend'
+project: 'go-svc'
 ---
 image: builder
 from: golang:1.19-alpine3.18
@@ -15,6 +15,7 @@ shell:
   setup:
   - export CGO_ENABLED=0
   - export GOOS=linux
+  - go mod download
   - go build -o /usr/local/bin/backend /go/src/github.com/apodeixis/backend/main.go
 
 ---
