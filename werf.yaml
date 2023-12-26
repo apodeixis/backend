@@ -15,8 +15,10 @@ shell:
   setup:
   - export CGO_ENABLED=0
   - export GOOS=linux
-  - export GO111MODULE=off
-  - go build -o /usr/local/bin/backend /go/src/github.com/apodeixis/backend/main.go
+  - cd /go/src/github.com/apodeixis/backend
+  - go mod download
+  - go build -o /usr/local/bin/backend main.go
+
 
 ---
 image: service
